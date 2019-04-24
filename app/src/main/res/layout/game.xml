@@ -1,6 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F3E9"
+    tools:context=".GameActivity">
+
+    <LinearLayout
+        android:id="@+id/playerStatistics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/colourLayer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/record"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
+            android:text="Record: 0"
+            android:textColor="#303652"
+            android:textSize="32sp"
+            app:fontFamily="@font/audiowide" />
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:gravity="center_horizontal"
+            android:text="Score: 0"
+            android:textColor="#303652"
+            android:textSize="32sp"
+            app:fontFamily="@font/audiowide" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/shadowLayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:translationY="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/topShadows"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/gShadow"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:alpha=".4"
+                android:contentDescription="TODO"
+                android:tag="green"
+                app:layout_constraintEnd_toStartOf="@+id/red"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/green_shaddow" />
+
+            <ImageView
+                android:id="@+id/rShadow"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:alpha=".4"
+                android:tag="red"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.875"
+                app:layout_constraintStart_toEndOf="@+id/green"
+                app:srcCompat="@drawable/red_shadow" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bottomShadows"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/yShadow"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:alpha=".4"
+                android:tag="yellow"
+                app:srcCompat="@drawable/yellow_shaddow" />
+
+            <ImageView
+                android:id="@+id/bShadow"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:alpha=".4"
+                android:tag="blue"
+                app:srcCompat="@drawable/blue_shaddow" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/colourLayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/green"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:alpha=".7"
+                android:contentDescription="green colour button"
+                android:tag="green"
+                app:layout_constraintEnd_toStartOf="@+id/red"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/green" />
+
+            <ImageView
+                android:id="@+id/red"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:alpha=".7"
+                android:tag="red"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.875"
+                app:layout_constraintStart_toEndOf="@+id/green"
+                app:srcCompat="@drawable/red" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/yellow"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:alpha=".7"
+                android:tag="yellow"
+                app:srcCompat="@drawable/yellow" />
+
+            <ImageView
+                android:id="@+id/blue"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:alpha=".7"
+                android:tag="blue"
+                app:srcCompat="@drawable/blue" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -1,5 +1,5 @@
 package com.stevenfriend.simon;
 
-enum Type {
+public enum Type {
     red, green, blue, yellow;
 }

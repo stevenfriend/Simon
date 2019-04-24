@@ -55,7 +55,7 @@ public class ButtonAnimation {
         ObjectAnimator shadowScaleX = ObjectAnimator.ofFloat(shadow, "scaleX", 0.85f, 1f);
         ObjectAnimator colorScaleY = ObjectAnimator.ofFloat(colour, "scaleY", 0.9f, 1f);
         ObjectAnimator shadowScaleY = ObjectAnimator.ofFloat(shadow, "scaleY", 0.85f, 1f);
-        ObjectAnimator shadowTransY = ObjectAnimator.ofFloat(shadow, "translationY", 0f, 10f);
+        ObjectAnimator shadowTransY = ObjectAnimator.ofFloat(shadow, "translationY", -10f, 0f);
         up.playTogether(colourAlpha, shadowAlpha, colorScaleX, shadowScaleX, colorScaleY, shadowScaleY, shadowTransY);
         up.setDuration(100);
         return up;

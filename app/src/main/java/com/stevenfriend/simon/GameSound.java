@@ -1,22 +1,23 @@
 package com.stevenfriend.simon;
 
+import android.content.Context;
 import android.media.AudioManager;
 import android.media.SoundPool;
 
-public class ColourSound {
-    SoundPool soundPool;
+public class GameSound {
+    private SoundPool soundPool;
     private int redSound, greenSound, blueSound, yellowSound, wrongSound;
 
-    public ColourSound() {
+    public GameSound(Context context) {
         soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
-        redSound = soundPool.load(this, R.raw.red, 1);
-        greenSound = soundPool.load(this, R.raw.green, 1);
-        blueSound = soundPool.load(this, R.raw.blue, 1);
-        yellowSound = soundPool.load(this, R.raw.yellow, 1);
-        wrongSound = soundPool.load(this, R.raw.wrong, 1);
+        redSound = soundPool.load(context, R.raw.red, 1);
+        greenSound = soundPool.load(context, R.raw.green, 1);
+        blueSound = soundPool.load(context, R.raw.blue, 1);
+        yellowSound = soundPool.load(context, R.raw.yellow, 1);
+        wrongSound = soundPool.load(context, R.raw.wrong, 1);
     }
 
-    private void play(Type type) {
+    public void play(Type type) {
         switch(type) {
             case red:
                 soundPool.play(redSound, 1, 1, 0,0,1);
@@ -36,3 +37,5 @@ public class ColourSound {
         }
     }
 }
+
+
