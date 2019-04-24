@@ -3,7 +3,6 @@ package com.stevenfriend.simon;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.SoundPool;
-import android.view.View;
 
 public class GameSound {
     private SoundPool soundPool;
@@ -18,24 +17,29 @@ public class GameSound {
         wrongSound = soundPool.load(context, R.raw.wrong, 1);
     }
 
-    public void play(View v) {
-        switch(v.getId()) {
-            case R.id.red:
-                soundPool.play(redSound, 0.5f, 1, 0,0,1);
+    public void play(Type type) {
+        switch(type) {
+            case red:
+                soundPool.play(redSound, 1, 1, 0,0,1);
                 break;
-            case R.id.green:
-                soundPool.play(greenSound, 1, 0.5f, 0,0,1);
+            case green:
+                soundPool.play(greenSound, 1, 1, 0,0,1);
                 break;
-            case R.id.blue:
-                soundPool.play(blueSound, 0.5f, 1, 0,0,1);
+            case blue:
+                soundPool.play(blueSound, 1, 1, 0,0,1);
                 break;
-            case R.id.yellow:
-                soundPool.play(yellowSound, 1, 0.5f, 0,0,1);
+            case yellow:
+                soundPool.play(yellowSound, 1, 1, 0,0,1);
                 break;
-            default:
+            case wrong:
                 soundPool.play(wrongSound, 1, 1, 0,0,1);
                 break;
         }
+    }
+
+    public void release() {
+        soundPool.release();
+        soundPool = null;
     }
 }
 

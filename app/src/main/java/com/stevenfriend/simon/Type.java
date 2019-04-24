@@ -1,5 +1,5 @@
 package com.stevenfriend.simon;
 
 public enum Type {
-    red, green, blue, yellow;
+    red, green, blue, yellow, wrong
 }
