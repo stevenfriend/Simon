@@ -5,11 +5,11 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.widget.ImageView;
 
-public class ButtonAnimation {
+public class GameAnimation {
     private ImageView colour;
     private ImageView shadow;
 
-    public ButtonAnimation(ImageView colour, ImageView shadow) {
+    public GameAnimation(ImageView colour, ImageView shadow) {
         this.colour = colour;
         this.shadow = shadow;
     }

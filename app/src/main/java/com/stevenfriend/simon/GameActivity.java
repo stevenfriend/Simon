@@ -7,17 +7,18 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class GameActivity extends AppCompatActivity {
-
     private ImageView red, rShadow, green, gShadow, blue, bShadow, yellow, yShadow;
-    private GameButton[] gameButtons = new GameButton[4];
+    private GameAnimation[] gameAnimation = new GameAnimation[4];
+    private GameSound gameSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game);
-
         setViews();
-        setButtons();
+        setLiseners();
+        setAnimation();
+        gameSound = new GameSound(this);
     }
 
     private void setViews() {
@@ -31,14 +32,48 @@ public class GameActivity extends AppCompatActivity {
         yShadow = findViewById(R.id.yShadow);
     }
 
-    private void setButtons() {
-        gameButtons[0] = new GameButton(Type.red, red, rShadow);
-        gameButtons[1] = new GameButton(Type.green, green, gShadow);
-        gameButtons[2] = new GameButton(Type.blue, blue, bShadow);
-        gameButtons[3] = new GameButton(Type.yellow, yellow, yShadow);
+    private void setLiseners() {
+        red.setOnTouchListener(listener);
+        green.setOnTouchListener(listener);
+        blue.setOnTouchListener(listener);
+        yellow.setOnTouchListener(listener);
     }
 
+    private View.OnTouchListener listener = new View.OnTouchListener() {
+        public boolean onTouch(View v, MotionEvent event) {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                getAnimation(v).playDown();
+                gameSound.play(v);
+                return true;
+            } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                getAnimation(v).playUp();
+                return true;
+            }
+            return false;
+        }
+    };
 
+    private GameAnimation getAnimation(View v) {
+        switch (v.getId()) {
+            case R.id.red:
+                return gameAnimation[0];
+            case R.id.green:
+                return gameAnimation[1];
+            case R.id.blue:
+                return gameAnimation[2];
+            case R.id.yellow:
+                return gameAnimation[3];
+            default:
+                return null;
+        }
+    }
+
+    private void setAnimation() {
+        gameAnimation[0] = new GameAnimation(red, rShadow);
+        gameAnimation[1] = new GameAnimation(green, gShadow);
+        gameAnimation[2] = new GameAnimation(blue, bShadow);
+        gameAnimation[3] = new GameAnimation(yellow, yShadow);
+    }
 }
 
 
