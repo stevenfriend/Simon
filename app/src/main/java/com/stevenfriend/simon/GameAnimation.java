@@ -8,11 +8,16 @@ import android.widget.ImageView;
 public class GameAnimation {
     private ImageView colour;
     private ImageView shadow;
+    private AnimatorSet currentAnimation;
 
     public GameAnimation(ImageView colour, ImageView shadow) {
         this.colour = colour;
         this.shadow = shadow;
     }
+
+    public void pauseAnimation() { currentAnimation.pause(); }
+
+    public void resumeAnimation() { currentAnimation.resume(); }
 
     public void playDown() {
         down().start();
@@ -22,7 +27,7 @@ public class GameAnimation {
         up().start();
     }
 
-    public AnimatorSet downUp(int delay, Animator.AnimatorListener listener) {
+    public void downUp(int delay, Animator.AnimatorListener listener) {
         AnimatorSet downUp = new AnimatorSet();
         AnimatorSet down = down().setDuration(delay);
         down.setStartDelay(delay*4);
@@ -30,7 +35,8 @@ public class GameAnimation {
         up.setStartDelay(delay*4);
         up.addListener(listener);
         downUp.playSequentially(down,up);
-        return downUp;
+        currentAnimation = downUp;
+        currentAnimation.start();
     }
 
     private AnimatorSet down() {
