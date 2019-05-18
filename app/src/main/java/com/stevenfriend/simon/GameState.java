@@ -60,7 +60,7 @@ public class GameState {
 
     public void continueGame() {
         counter = 0;
-        delay -= 4;
+        if(delay > 10) delay -= 4;
         score++;
         if(score > record) record = score;
         pickColour();

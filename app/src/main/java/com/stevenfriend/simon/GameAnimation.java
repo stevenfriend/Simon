@@ -30,9 +30,9 @@ public class GameAnimation {
     public void downUp(int delay, Animator.AnimatorListener listener) {
         AnimatorSet downUp = new AnimatorSet();
         AnimatorSet down = down().setDuration(delay);
-        down.setStartDelay(delay*4);
+        down.setStartDelay(delay*3);
         AnimatorSet up = up().setDuration(delay);
-        up.setStartDelay(delay*4);
+        up.setStartDelay(delay*3);
         up.addListener(listener);
         downUp.playSequentially(down,up);
         currentAnimation = downUp;

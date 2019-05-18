@@ -46,13 +46,6 @@ public class GameActivity extends AppCompatActivity {
         setListeners(touchListener);
     }
 
-    private void playSequence() {
-        gameState.gameInactive(true);
-        setListeners(null);
-        gameAnimation[gameState.getSequence()]
-                .downUp(gameState.getDelay(), animatorListener);
-    }
-
     private void setViews() {
         red = findViewById(R.id.red);
         rShadow = findViewById(R.id.rShadow);
@@ -131,6 +124,13 @@ public class GameActivity extends AppCompatActivity {
         }
     };
 
+    private void playSequence() {
+        gameState.gameInactive(true);
+        setListeners(null);
+        gameAnimation[gameState.getSequence()]
+                .downUp(gameState.getDelay(), animatorListener);
+    }
+
     private Type getType(View v) {
         switch (v.getId()) {
             case R.id.red:
@@ -173,12 +173,20 @@ public class GameActivity extends AppCompatActivity {
         gameAnimation[Type.yellow.ordinal()] = new GameAnimation(yellow, yShadow);
     }
 
+    @Override
     protected void onPause() {
         super.onPause();
         gameState.saveRecord();
         if(gameState.gameInactive()) gameAnimation[gameState.getSequence()].pauseAnimation();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(gameState.gameInactive()) gameAnimation[gameState.getSequence()].resumeAnimation();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         gameSound.release();

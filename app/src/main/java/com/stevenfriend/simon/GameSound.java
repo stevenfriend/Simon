@@ -20,16 +20,16 @@ public class GameSound {
     public void play(Type type) {
         switch(type) {
             case red:
-                soundPool.play(redSound, 1, 1, 0,0,1);
+                soundPool.play(redSound, 0.8f, 1, 0,0,1);
                 break;
             case green:
-                soundPool.play(greenSound, 1, 1, 0,0,1);
+                soundPool.play(greenSound, 1, 0.8f, 0,0,1);
                 break;
             case blue:
-                soundPool.play(blueSound, 1, 1, 0,0,1);
+                soundPool.play(blueSound, 0.8f, 1, 0,0,1);
                 break;
             case yellow:
-                soundPool.play(yellowSound, 1, 1, 0,0,1);
+                soundPool.play(yellowSound, 1, 0.8f, 0,0,1);
                 break;
             case wrong:
                 soundPool.play(wrongSound, 1, 1, 0,0,1);
